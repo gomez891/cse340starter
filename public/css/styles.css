@@ -3,4 +3,93 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  font-family: 'Cabin', serif;
+  margin: 0;
+}
+
+
+
+/******* Mobile Screen ***************/
+#top-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+#top-header a {
+  color:black;
+  text-decoration:none;
+}
+
+header, main, footer{
+  margin: 1rem;
+}
+
+nav {
+  background: black;
+  color: white;
+}
+
+#hero{
+  position: relative;
+}
+
+#hero-img{
+  width: 100%;
+}
+
+#hero-ad{
+  position: absolute;
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+nav>ul{
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 1rem 0;
+ 
+}
+
+h1{
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+
+
+#hero-ad{
+  width: 33%;
+  font-size: .65rem;
+}
+
+#hero-ad>ul{
+  list-style: none;
+  padding-left: 0;
+}
+
+
+#reviews>ul{
+  padding-left: 20px;
+  margin:0;
+}
+
+#reviews>ul>li{
+  padding: 7.5px 0;
+  font-size: 14px;
+}
+
+#upgrade-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+.upgrade-detail{
+  text-align: center;
+  padding-bottom: 1rem;
+}
+.upgrade-square{
+  width: 100%;
+  display: flex;
+  background-color: aquamarine;
 }
