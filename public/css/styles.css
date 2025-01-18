@@ -13,6 +13,7 @@
 #top-header{
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 #top-header a {
@@ -24,8 +25,18 @@ header, main, footer{
   margin: 1rem;
 }
 
+.siteName{
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+#tools{
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
 nav {
-  background: black;
+  background: #242333;
   color: white;
 }
 
@@ -38,9 +49,22 @@ nav {
 }
 
 #hero-ad{
+  color: #01B0D3;
   position: absolute;
-  padding: 5px;
+  padding: 0.25rem;
   background: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  width: 33%;
+}
+
+button{
+  background-color: #01B0D3;
+  color: black;
+  border-color: lightgrey;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  
+  
 }
 
 nav>ul{
@@ -48,7 +72,7 @@ nav>ul{
   justify-content: space-evenly;
   list-style: none;
   padding: 1rem 0;
- 
+  
 }
 
 h1{
@@ -56,11 +80,12 @@ h1{
   margin-bottom: 10px;
 }
 
+section {
+  margin-bottom: 1rem;
+}
 
-
-#hero-ad{
-  width: 33%;
-  font-size: .65rem;
+#hero-ad>h2{
+  font-size: 1rem;
 }
 
 #hero-ad>ul{
@@ -76,13 +101,14 @@ h1{
 
 #reviews>ul>li{
   padding: 7.5px 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 #upgrade-list{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5px;
+  column-gap: .5rem;
 }
 .upgrade-detail{
   text-align: center;
@@ -91,5 +117,52 @@ h1{
 .upgrade-square{
   width: 100%;
   display: flex;
-  background-color: aquamarine;
+  background-color: #01B0D3;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+}
+
+.upgrade-square > img {
+  height: 3rem;
+}
+
+
+/******* Desktop Screen ***************/
+@media only screen and (min-width: 768px){
+  body{
+    background-image: url("../images/site/checkerboard.jpg");
+  }
+  #wrapper{
+    margin: 1.5rem 4rem;
+    background-color: white;
+    border:5px solid #01B0D3 ;
+    border-radius: 0.75rem;
+    padding: 1rem;
+  
+  }
+  nav>ul{
+    padding: 0.5rem 0;
+  }
+
+  #hero-ad{
+    font-size: 1.25rem;
+    height: 60%;
+  }
+  #hero-ad >h2{
+    font-size: 1.75rem;
+  }
+  #hero-ad > button{
+    width: 10rem;
+    height: 2.5rem;
+    margin: 2rem;
+  }
+  #review-and-upgrade{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  #review-and-upgrade > section{
+    width: 48%;
+  }
 }
