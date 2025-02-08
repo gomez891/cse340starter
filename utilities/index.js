@@ -29,13 +29,13 @@ Util.getNav = async function (req, res, next) {
 * ************************************ */
 
 Util.buildClassificationGrid = async function (data) {
-  let grid
+    let grid
   if(data.length > 0) {
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => {
-      grid += '<li>'
-      grid += '<a href="../../inv/detail/'+ vehicle.inv_id
-      + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model
+        grid += '<li>'
+        grid += '<a href="../../inv/detail/'+ vehicle.inv_id
+        + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model
       + 'details"><img src="' + vehicle.inv_thumbnail
       + '" alt="Image of ' + vehicle.inv_make + ' '+ vehicle.inv_model
       +' on CSE Motors" /></a>'
@@ -52,12 +52,34 @@ Util.buildClassificationGrid = async function (data) {
       grid += '</li>'
     })
     grid += '</ul>'
-  } else {
+} else {
     grid +='<p class="notice">Sorry, no matching vehicles could be found.</p>'
-
-  }
+    
+}
   return grid
 }
 
+/* **************************************
+* Build the inventory view HTML
+* ************************************ */
+Util.buildInvGrid = async function (data) {
+    let grid
+    
+       grid = '<section class=vehicle-display>'
+       grid += '<img src="' + data[0].inv_image 
+       + '" alt="Image of ' + data[0].inv_make + ' '+ data[0].inv_model
+       +' on CSE Motors" />'
+       grid += '<div class=inv-details>'
+       grid += '<h2>' + data[0].inv_year + ' ' + data[0].inv_make + ' '+ data[0].inv_model + '</h2>'
+       grid += '<span>$' + new Intl.NumberFormat('en-US').format(data[0].inv_price) + '</span>'
+       grid += '<span> Mileage: ' + data[0].inv_miles.toLocaleString() + '</span>'
+       grid += '<span> Ext. Color: ' + data[0].inv_color + '</span>'
+       grid +=  '<p>'+ data[0].inv_description + '</p>'
+       grid += '</div>'
+       grid += '</section>'
+   
+
+    return grid
+}
 
 module.exports = Util
