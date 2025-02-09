@@ -138,6 +138,70 @@ section {
   height: 3rem;
 }
 
+#inv-display {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column
+}
+#inv-display li {
+  margin: 1rem;
+  width: 100%;
+}
+
+#inv-display li a{
+  text-decoration: none;
+}
+
+#inv-display>li > a {
+  display: block;
+  width: 50%;
+  margin: auto;
+}
+#inv-display>li > a > img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+.namePrice {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.namePrice a:link, .namePrice a:visited {
+  color: #242333;
+}
+
+hr{
+  margin: .5rem 0;
+}
+
+.vehicle-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.vehicle-display > img{
+  display: block;
+  margin: 0.75rem auto;
+  width: 75%;
+}
+
+.inv-details {
+  padding: 0.5rem;
+}
+
+
+.inv-details div, .inv-details p {
+  margin: 5px 0;
+  letter-spacing: 0.5px;
+}
+
+.inv-details p:last-of-type {
+  margin-top: 20px;
+}
 
 /******* Desktop Screen ***************/
 @media only screen and (min-width: 768px){
@@ -175,5 +239,17 @@ section {
   }
   #review-and-upgrade > section{
     width: 48%;
+  }
+
+  .vehicle-display {
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .vehicle-display img {
+    width: 40%;
+  }
+  .inv-details {
+    width: 40%;
   }
 }
