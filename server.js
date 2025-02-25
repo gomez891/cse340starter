@@ -5,6 +5,8 @@
 /* ***********************
  * Require Statements
  *************************/
+const session = require("express-session")
+const pool = require('./database')
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
@@ -12,7 +14,7 @@ const app = express()
 const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
-const utilities = require("./utilities/")
+const utilities = require("./utilities/index")
 
 /* ***********************
  * View Engine and Templates
@@ -20,6 +22,24 @@ const utilities = require("./utilities/")
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout","./layouts/layout")
+
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(session({
+  store: new(require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+
+
 
 
 /* ***********************
@@ -35,11 +55,12 @@ app.use(async (req, res, next) => {
   next({status:404, message: 'Sorry, we appear to have lost that page'})
 })
 
+
+
 /* ***********************
 * Express Error Handler
 * Place after all other middleware
 *************************/
-
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
@@ -50,7 +71,6 @@ app.use(async (err, req, res, next) => {
     nav
   })
 })
-
 
 
 
