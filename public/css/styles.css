@@ -90,6 +90,11 @@ h1{
   font-size: 22px;
   margin-bottom: 10px;
 }
+.notice {
+  list-style: none;
+  font-size: 1.25rem;
+  padding-left: 0;
+}
 
 section {
   margin-bottom: 1rem;
