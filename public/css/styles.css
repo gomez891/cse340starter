@@ -143,35 +143,50 @@ section {
   height: 3rem;
 }
 
+/* Product Grid Styles */
 #inv-display {
-  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  margin: 2rem 0;
   list-style: none;
-  display: flex;
-  align-items: center;
-  flex-direction: column
-}
-#inv-display li {
-  margin: 1rem;
-  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#inv-display li a{
-  text-decoration: none;
+.vehicle-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  
 }
 
-#inv-display>li > a {
-  display: block;
-  width: 50%;
-  margin: auto;
-}
-#inv-display>li > a > img {
+.vehicle-image {
   width: 100%;
-  height: 100%;
-  object-fit: fill;
+  height: 200px;
+  object-fit: cover;
 }
+
 .namePrice {
-  margin-top: 1rem;
-  text-align: center;
+  padding: 1.5rem;
+}
+
+.vehicle-name {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: #242333;
+}
+
+
+.vehicle-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #242333;
+}
+
+.namePrice a{
+  text-decoration: none;
 }
 
 .namePrice a:link, .namePrice a:visited {
@@ -192,6 +207,8 @@ hr{
   display: block;
   margin: 0.75rem auto;
   width: 75%;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .inv-details {
@@ -284,7 +301,7 @@ hr{
     border:5px solid #01B0D3 ;
     border-radius: 0.75rem;
     padding: 1rem;
-  
+    
   }
   nav>ul{
     padding: 0.5rem 0;
@@ -309,6 +326,12 @@ hr{
   }
   #review-and-upgrade > section{
     width: 48%;
+  }
+  
+  #inv-display{
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0;
   }
 
   .vehicle-display {

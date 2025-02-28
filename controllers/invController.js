@@ -25,7 +25,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 
 invCont.buildByInvId = async function (req, res, next) {
   const inv_id = req.params.invId
-  if (inv_id >= 9){
+  if (inv_id >= 99){
     const error = new Error("Intentional Error")
     error.status = 500
     throw error
