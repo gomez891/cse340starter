@@ -25,16 +25,25 @@ invCont.buildByClassificationId = async function (req, res, next) {
 
 invCont.buildByInvId = async function (req, res, next) {
   const inv_id = req.params.invId
+  if (inv_id >= 9){
+    const error = new Error("Intentional Error")
+    error.status = 500
+    throw error
+  }
   const data = await invModel.getInventoryByInvId(inv_id)
   const grid = await utilities.buildInvGrid(data)
   let nav = await utilities.getNav()
   const className = data[0].inv_make + " " + data[0].inv_model
-  res.render("./inventory/vehicle_view", {
-    title: className,
-    nav,
-    grid,
-  })
+  
+    res.render("./inventory/vehicle_view", {
+      title: className,
+      nav,
+      grid,
+    })
+
+  
   
 }
+
 
 module.exports = invCont
