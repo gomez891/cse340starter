@@ -7,8 +7,18 @@
     <!-- Message Block -->
      <% messages() %>
     
-<div class="login-form">
-    <form action="/login">
+    
+     <% if(errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error => { %>
+                <li><%= error.msg %></li>
+                <% }) %>
+        </ul>
+        <% } %>
+
+
+
+    <form action="/account/login" id="login-form" method="post">
         <label for="email">Email:</label>
         <input class="login-input" type="email" name="email" id="email" required>
         <label for="password">Password:</label>
@@ -17,4 +27,3 @@
         <input class="submit-btn" type="submit" value="Login">
         <span>No account? <a href="/account/register">Sign-up</a></span>
     </form>
-</div>
