@@ -11,7 +11,7 @@ async function buildLogin(req, res, next) {
     res.render("account/login", {
         title: "Login",
         nav,
-        
+        errors: null,
     })
 }
 
@@ -78,7 +78,53 @@ async function registerAccount(req, res) {
     
 }
 
+/* ****************************************
+*  Process Login
+* *************************************** */
+async function loginAccount(req, res) {
+    let nav = await utilities.getNav()
+    const {account_email, account_password} = req.body
+
+    let hashedPassword
+
+    try {
+        hashedPassword = await bcrypt.hashSync(account_password, 10)
+
+    } catch(error) {
+        req.flash("notice", 'Sorry there was an error processing the login')
+        res.status(500).render("account/login", {
+            title: "Login",
+            nav,
+            errors: null
+        })
+    }
+
+    const regResult = await accountModel.checkExistingEmail(
+        account_email,
+        hashedPassword,
+    )
+
+    if(regResult) {
+        req.flash(
+            "notice",
+            `Login success!`
+        )
+        res.status(201).render("", {
+            title: "Home",
+            nav,
+        })
+
+    } else {
+        req.flash("notice", "Sorry, the login failed")
+        res.status(501).render("account/login"), {
+            title: "Login",
+            nav,
+        }
+    }
+}
 
 
 
-module.exports = { buildLogin, buildRegister, registerAccount }
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, loginAccount }
