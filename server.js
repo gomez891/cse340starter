@@ -17,6 +17,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
 const utilities = require("./utilities/index")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 /* ***********************
  * View Engine and Templates
@@ -51,6 +52,9 @@ app.use(function(req, res, next){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+
+// Cookie Parser Middleware
+app.use(cookieParser())
 
 /* ***********************
  * Routes
