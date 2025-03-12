@@ -25,6 +25,21 @@ validate.classificationRules = () => {
 *   Check data and return errors or continue to classification addition
 * *********************************************************************/
 
-validate.checkClassData = async (req, resizeBy, next) => {
-
+validate.checkClassData = async (req, res, next) => {
+    const { classification_name } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if(!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        res.render("/" ,{
+            errors,
+            title: "Home",
+            nav,
+            classification_name,
+        })
+        return
+    }
+    next()
 }
+
+module.exports = validate
