@@ -62,9 +62,14 @@ invCont.buildManagment = async function (req,res) {
 /* ********************************************************
 *   Deliever add classification view
 *  ********************************************************/
-async function buildAddClassification(req, res, next) {
+invCont.buildAddClassification = async function (req, res) {
   let nav = await utilities.getNav()
-  res.render("")
+  res.render("./inventory/add-classification",
+    {
+    title: "Add Classification",
+    nav,
+  }
+  )
 }
 
 
@@ -72,7 +77,7 @@ async function buildAddClassification(req, res, next) {
 /* ********************************************************
 *   Process classification
 *  ********************************************************/
-async function addClassification(res,req) {
+invCont.addClassification = async function (res,req) {
   let nav = await utilities.getNav()
   const {classification_name} = req.body
 

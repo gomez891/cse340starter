@@ -19,7 +19,7 @@ module.exports = router;
 router.get('/management', utilities.handleErrors(invConroller.buildManagment))
 
 //Route to build the add classification view page
-router.get('/add-classification', utilities.handleErrors()) 
+router.get('/add-classification', utilities.handleErrors(invConroller.buildAddClassification)) 
 
 router.post(
     "/login",
