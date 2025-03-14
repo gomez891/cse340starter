@@ -3,17 +3,18 @@
 <% } else { res.redirect('/') } %>
 
 <!-- Message Block -->
-<% messages() %> <% if(errors) { %>
-<ul class="notice">
-  <% errors.array().forEach(error => { %>
-  <li><%= error.msg %></li>
-  <% }) %>
-</ul>
+<% messages() %> 
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
 <% } %>
 
-<form action="/inv/" class="addin-form" method="post">
-    <h2>Add a classification</h2>
+<form action="/inv/add-classification" class="addin-form" method="post">
     <label for="classification">Classification Name:</label>
     <div class="">The classification can not contain a space or a special character</div>
     <input class="add-input" type="text" name="classification" id="classification" required pattern="^[a-zA-Z0-9]+$">
+    <input class="submit-btn" type="submit" value="Add Classification">
 </form>

@@ -24,6 +24,6 @@
     <input class="sign-in-input" type="email" name="email" id="email" required value="<%= locals.account_email %>">
     <label for="password">Password:</label>
     <div class="pword-requirement">Password must be at least 12 characters and contain least 1 uppercase character, 1 number and 1 special character</div>
-    <input class="sign-in-input" type="password" name="password" id="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z0-9](?!.*\s).{12,}$)">
+    <input class="sign-in-input" type="password" name="password" id="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
     <input class="submit-btn" type="submit" value="Register">
 </form>

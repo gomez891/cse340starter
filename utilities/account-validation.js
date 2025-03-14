@@ -46,11 +46,11 @@ validate.registrationRules = () => {
         .trim()
         .notEmpty()
         .isStrongPassword({
-            minLength:12,
-            minLowercase:1,
-            minUppercase:1,
-            minNumbers:1,
-            minSymbols:1,
+            minLength: 12,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbols: 1,
         })
         .withMessage("Password does not meet requirements."),
     ]

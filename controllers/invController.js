@@ -49,7 +49,7 @@ invCont.buildByInvId = async function (req, res, next) {
 *   Build Managment View
 *  ********************************************************/
 invCont.buildManagment = async function (req,res) {
-  const nav = await utilities.getNav()
+  let nav = await utilities.getNav()
   res.render("./inventory/management",
     {
       title: "Management",
@@ -66,8 +66,9 @@ invCont.buildAddClassification = async function (req, res) {
   let nav = await utilities.getNav()
   res.render("./inventory/add-classification",
     {
-    title: "Add Classification",
-    nav,
+      title: "Add Classification",
+      nav,
+      errors: null,
   }
   )
 }
@@ -90,13 +91,13 @@ invCont.addClassification = async function (res,req) {
       "notice",
       `Congratulations, ${classification_name} has been added!`
     )
-    res.status(201).render("/management", {
+    res.status(201).render("./inventory/management", {
       title: "Management",
       nav,
     })
   } else {
     req.flash("notice", "Sorry the classification name wasn't added")
-    res.status(501).render("/inv/add_classification", {
+    res.status(501).render("./inventory/add-classification", {
       title: "Add Classification",
       nav,
     })

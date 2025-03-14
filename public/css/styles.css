@@ -229,7 +229,7 @@ hr{
   margin: auto;
 }
 
-.login-form, .sign-in-form {
+.login-form, .sign-in-form, .addin-form {
   background-color: #242333;
   color: white;
   padding: 2rem;

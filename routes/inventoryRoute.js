@@ -13,17 +13,18 @@ router.get("/type/:classificationId", utilities.handleErrors(invConroller.buildB
 
 // Route to build the vehicle view page
 router.get("/detail/:invId", utilities.handleErrors(invConroller.buildByInvId));
-module.exports = router;
 
 // Route to build the managment view page
-router.get('/management', utilities.handleErrors(invConroller.buildManagment))
+router.get('/management', utilities.handleErrors(invConroller.buildManagment));
 
 //Route to build the add classification view page
-router.get('/add-classification', utilities.handleErrors(invConroller.buildAddClassification)) 
+router.get('/add-classification', utilities.handleErrors(invConroller.buildAddClassification));
 
 router.post(
-    "/login",
+    "/add-classification",
     regValidate.classificationRules(),
     regValidate.checkClassData,
     utilities.handleErrors(invConroller.addClassification)
 )
+
+module.exports = router;
